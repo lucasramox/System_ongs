@@ -12,11 +12,25 @@ class custoController extends Controller
     public function index()
     {
         $custos = DB::table('custos')
-        ->select('nome_fornecedor','valor_custo')
-        ->groupBy('nome_fornecedor','id')
+        ->select('nome_fornecedor',DB::raw('SUM(valor_custo) as soma_custo'))
+        ->groupBy('nome_fornecedor')
         ->get();
-        //return response()->json(compact('custos'));
-        return response()->json($custos);
+
+        $array = json_decode(json_encode($custos), true);
+        $valorTotal = 0;
+        $arrayMaiorGasto = [];
+        $tam_array = count($array);
+        for($i=0;$i<$tam_array;$i++){
+            $valorTotal += $array[$i]['soma_custo'];
+        }
+        $media = $valorTotal/$tam_array;
+
+        for($i=0;$i<count($array);$i++){
+            if($media <= $array[$i]['soma_custo']){
+                array_push($arrayMaiorGasto,$array[$i]['soma_custo']);
+            }
+        }
+        dd($media);
     }
 
     public function store(Request $request)
@@ -28,5 +42,5 @@ class custoController extends Controller
         $custo->save();
         return response()->json($request->all());
     }
-
+ 
 }

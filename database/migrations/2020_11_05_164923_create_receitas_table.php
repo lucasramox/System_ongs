@@ -16,7 +16,7 @@ class CreateReceitasTable extends Migration
         Schema::create('receitas', function (Blueprint $table) {
             $table->id();
             $table->string('nome_cliente');
-            $table->string('valor_receita');
+            $table->float('valor_receita');
             $table->timestamps();
         });
     }

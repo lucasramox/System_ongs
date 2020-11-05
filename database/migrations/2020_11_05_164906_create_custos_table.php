@@ -16,7 +16,7 @@ class CreateCustosTable extends Migration
         Schema::create('custos', function (Blueprint $table) {
             $table->id();
             $table->string('nome_fornecedor');
-            $table->string('valor_custo');
+            $table->float('valor_custo');
             $table->timestamps();
         });
     }
