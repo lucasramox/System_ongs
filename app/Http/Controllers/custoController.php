@@ -14,23 +14,18 @@ class custoController extends Controller
         $custos = DB::table('custos')
         ->select('nome_fornecedor',DB::raw('SUM(valor_custo) as soma_custo'))
         ->groupBy('nome_fornecedor')
+        ->orderBy('soma_custo','desc')
         ->get();
 
         $array = json_decode(json_encode($custos), true);
         $valorTotal = 0;
-        $arrayMaiorGasto = [];
         $tam_array = count($array);
         for($i=0;$i<$tam_array;$i++){
             $valorTotal += $array[$i]['soma_custo'];
         }
-        $media = $valorTotal/$tam_array;
-
-        for($i=0;$i<count($array);$i++){
-            if($media <= $array[$i]['soma_custo']){
-                array_push($arrayMaiorGasto,$array[$i]['soma_custo']);
-            }
-        }
-        dd($media);
+        $array_return = [];
+        array_push($array_return,$array,round($valorTotal,2));
+        return response()->json(compact('array_return'));
     }
 
     public function store(Request $request)
