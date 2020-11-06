@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container">
-  <a href="{{url('/')}}">Voltar</a>
+<div class="container py-5">
+  <a class="btn btn-light shadow-sm" href="{{url('/')}}">Voltar</a>
 </div>
 <div class="container">
   <h4>Relatório dos clientes</h4>

@@ -1,8 +1,12 @@
 @extends('templates.templates')
 
 @section('content')
-<div class="container">
-  <form action="{{ route('custo.create') }}" method="post">
+<div class="container py-5">
+  <a class="btn btn-light shadow-sm" href="{{url('/')}}">Voltar</a>
+</div>
+<div class="container shadow-sm">
+  <div class="py-4">
+  <form action="{{ route('fornecedor.create') }}" method="post">
     @csrf
     {{ csrf_field() }}
     <div class="form-group">
@@ -13,8 +17,9 @@
       <label for="exampleInputPassword1">Valor do Custo</label>
       <input type="text" name="valor_custo" class="form-control" id="valor_custo" onkeypress="return SomenteNumero(event)">
     </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
   </form>
+  </div>
 </div>
 <script language='JavaScript'>
   function SomenteNumero(e) {

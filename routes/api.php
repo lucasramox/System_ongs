@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\custoController;
 use App\Http\Controllers\receitaController;
+use App\Http\Controllers\saldoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,7 @@ Route::get('/receita',[receitaController::class,'index']);
 Route::get('/custo',[custoController::class,'index']);
 Route::post('/custo',[custoController::class,'store']);
 
+
+Route::get('/saldo',[saldoController::class,'index']);
 
 

@@ -26,8 +26,7 @@ class receitaController extends Controller
         }
         $array_return = [];
         array_push($array_return, $array, round($valorTotal, 2));
-        // return response()->json(compact('clientes'));
-        $clientes = json_decode(json_encode($array_return), FALSE);
+        $clientes = $array_return[0];
         return view('relatorio_cliente')->with('clientes', $clientes);
     }
 
@@ -38,6 +37,5 @@ class receitaController extends Controller
         $receita->valor_receita = $request->valor_receita;
         $receita->save();
         return view('formulario_cliente');
-        //return response()->json($request->all());
     }
 }

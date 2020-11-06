@@ -1,13 +1,13 @@
 @extends('templates.templates')
 
 @section('content')
-<div class="container">
-  <a href="{{url('/')}}">Voltar</a>
+<div class="container py-4">
+<a class="btn btn-light shadow-sm" href="{{url('/')}}">Voltar</a>
 </div>
 <div class="container">
   <h4>Relatório de fornecedores</h4>
 </div>
-<div class="container">
+<div class="container shadow-sm" style="padding:2%">
   <table class="table table-striped">
     <thead>
       <tr>
